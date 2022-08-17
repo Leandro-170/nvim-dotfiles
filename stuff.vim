@@ -1,3 +1,4 @@
+" General stuff goes here because i can't be bothered to type 'vim.cmd(blabla)' over and over again on the lua file only to have it not work
 set number
 set numberwidth=2
 set mouse=a
