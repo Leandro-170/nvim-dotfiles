@@ -24,6 +24,9 @@ Plug 'yuttie/comfortable-motion.vim'
 Plug 'dracula/vim'
 Plug 'christianchiarulli/nvcode-color-schemes.vim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'mfussenegger/nvim-dap'
+" Plug 'mfussenegger/nvim-dap'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'kyazdani42/nvim-tree.lua'
 
 call plug#end()
+

@@ -73,21 +73,3 @@
       }
     }
   }
-
-  require'nvim-treesitter.configs'.setup {
-		ensure_installed = { "c", "lua", "cpp" },
-		highlight = {
-    			-- `false` will disable the whole extension
-    			enable = true,
-    			additional_vim_regex_highlighting = false,
-		},
-	}
-    local dap = require'dap'
-    function map(mode, lhs, rhs, opts)
-	local options = { noremap = true, silent = true }
-	if opts then
-	    options = vim.tbl_extend("force", options, opts)
-	end
-	vim.api.nvim_set_keymap(mode, lhs, rhs, options)
-    end
-
