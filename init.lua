@@ -1,3 +1,8 @@
+
+if vim.fn["has"]('nvim-0.8') == 0 then
+    error("Neovim 0.8+ is required")
+end
+
 require('plugins')
 require('setupcmp')
 require('setupmaterial')
