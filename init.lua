@@ -68,15 +68,15 @@ set 'list'
 set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
 
 -- lsp stuff
-command '-nargs=0 LSPDefinition lua vim.lsp.buf.definition()'
-command '-nargs=0 LSPTypeDefinition lua vim.lsp.buf.type_definition()'
-command '-nargs=0 LSPDeclaration lua vim.lsp.buf.declaration()'
-command '-nargs=0 LSPHover lua vim.lsp.buf.hover()'
-command '-nargs=0 LSPReferences lua vim.lsp.buf.references()'
-command '-nargs=0 LSPRename lua vim.lsp.buf.rename()'
+command 'LSPDefinition lua vim.lsp.buf.definition()'
+command 'LSPTypeDefinition lua vim.lsp.buf.type_definition()'
+command 'LSPDeclaration lua vim.lsp.buf.declaration()'
+command 'LSPHover lua vim.lsp.buf.hover()'
+command 'LSPReferences lua vim.lsp.buf.references()'
+command 'LSPRename lua vim.lsp.buf.rename()'
 
-command '-nargs=0 NvimTreeFloat lua NvimTreeFloat()'
-command '-nargs=0 NvimTreeDock lua NvimTreeDock()'
+command 'NvimTreeFloat lua NvimTreeFloat()'
+command 'NvimTreeDock lua NvimTreeDock()'
 
 -- From the barbar repo
 local nvim_tree_events = require('nvim-tree.events')
