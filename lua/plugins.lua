@@ -1,5 +1,6 @@
 require('packer').startup(function(use)
 
+  use 'wbthomason/packer.nvim'
   --use 'prabirshrestha/vim-lsp'
   --use 'mattn/vim-lsp-settings'
 --Plug 'prabirshrestha/asyncomplete.vim'
@@ -30,6 +31,7 @@ require('packer').startup(function(use)
   use 'kyazdani42/nvim-tree.lua'
   use{'mg979/vim-visual-multi', branch = 'master'}
   use 'airblade/vim-gitgutter'
+  use 'romgrk/barbar.nvim'
 
 end)
 

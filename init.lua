@@ -3,6 +3,7 @@ require('setupcmp')
 require('setupmaterial')
 require('setupnvimtree')
 require('setuplualine')
+require('setupbarbar')
 
 require'nvim-treesitter.configs'.setup
 {
@@ -23,7 +24,7 @@ local global = vim.g
 set 'number'
 set 'numberwidth=1'
 set 'mouse=a'
-global.material_style = "palenight"
+global.material_style = "deep ocean"
 color 'material'
 
 set 'softtabstop=4'
@@ -52,4 +53,24 @@ set 'visualbell'
 -- set 'cmdheight=2'
 set 'notimeout ttimeout ttimeoutlen=200'
 set 'pastetoggle=<F11>'
+
+-- From the barbar repo
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_api = require('bufferline.api')
+
+local function get_tree_size()
+  return require'nvim-tree.view'.View.width
+end
+
+nvim_tree_events.subscribe('TreeOpen', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('Resize', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('TreeClose', function()
+  bufferline_api.set_offset(0)
+end)
 
