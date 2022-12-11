@@ -18,12 +18,12 @@ require("nvim-tree").setup({
       },
     },
     float = {
-      enable = false,
+      enable = true,
       open_win_config = {
         relative = "editor",
         border = "rounded",
-        width = 30,
-        height = 30,
+        width = 35,
+        height = 20,
         row = 1,
         col = 1,
       },
@@ -54,7 +54,7 @@ require("nvim-tree").setup({
     group_empty = true,
   },
   filters = {
-    dotfiles = true,
+    dotfiles = false,
   },
 })
 

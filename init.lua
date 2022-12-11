@@ -39,8 +39,7 @@ color 'material'
 
 set 'softtabstop=4'
 set 'shiftwidth=4'
-cmd 'command! -nargs=0 Tab2 set softtabstop=2 shiftwidth=2'
-cmd 'command! -nargs=0 Tab4 set softtabstop=4 shiftwidth=4'
+cmd 'command! -nargs=1 TabSet set softtabstop=<args> shiftwidth=<args>'
 
 set 'expandtab'
 set 'nocompatible'
@@ -67,8 +66,16 @@ set 'list'
 --☱☲☳☴
 set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
 
+-- lsp stuff
+cmd 'command! -nargs=0 LSPDefinition lua vim.lsp.buf.definition()'
+cmd 'command! -nargs=0 LSPTypeDefinition lua vim.lsp.buf.type_definition()'
+cmd 'command! -nargs=0 LSPDeclaration lua vim.lsp.buf.declaration()'
+cmd 'command! -nargs=0 LSPHover lua vim.lsp.buf.hover()'
+cmd 'command! -nargs=0 LSPReferences lua vim.lsp.buf.references()'
+cmd 'command! -nargs=0 LSPRename lua vim.lsp.buf.rename()'
+
 -- From the barbar repo
-local nvim_tree_events = require('nvim-tree.events')
+--[[local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')
 
 local function get_tree_size()
@@ -85,5 +92,5 @@ end)
 
 nvim_tree_events.subscribe('TreeClose', function()
   bufferline_api.set_offset(0)
-end)
+end)]]
 
