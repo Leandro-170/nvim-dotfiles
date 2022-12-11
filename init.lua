@@ -1,5 +1,4 @@
-vim.cmd([[ runtime plugins.vim ]])
-vim.cmd([[ runtime airline.vim ]])
+require('plugins')
 require('setupcmp')
 require('setupmaterial')
 require('setupnvimtree')
