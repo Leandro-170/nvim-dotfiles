@@ -5,6 +5,7 @@ if has('nvim-0.8') == 0 then
     error("Neovim 0.8+ is required")
 end
 
+-- Plugins and configurations for them
 require('plugins')
 require('setupcmp')
 require('langserver')
@@ -13,6 +14,7 @@ require('setupnvimtree')
 require('setuplualine')
 require('setupbarbar')
 
+-- Treesitter config
 require'nvim-treesitter.configs'.setup
 {
   ensure_installed = { "c", "lua", "cpp" },

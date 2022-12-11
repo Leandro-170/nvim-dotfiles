@@ -1,6 +1,6 @@
 local lspconfig = require'lspconfig'
-
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local lspkind = require('lspkind')
 
 lspconfig['ccls'].setup
 {
@@ -35,4 +35,46 @@ lspconfig.sumneko_lua.setup
     }
   }
 }
+
+lspkind.init({
+  mode = 'symbol_text',
+
+  -- default symbol map
+  -- can be either 'default' (requires nerd-fonts font) or
+  -- 'codicons' for codicon preset (requires vscode-codicons font)
+  --
+  -- default: 'default'
+  preset = 'default',
+
+  -- override preset symbols
+  --
+  -- default: {}
+  symbol_map = {
+    Text = "",
+    Method = "⚐",
+    Function = "⚑",
+    Constructor = "♡",
+    Field = "⏺",
+    Variable = "♠",
+    Class = "♦",
+    Interface = "♢",
+    Module = "♤",
+    Property = "○",
+    Unit = "☐",
+    Value = "✦",
+    Enum = "∃",
+    Keyword = "",
+    Snippet = "",
+    Color = "⣿",
+    File = "",
+    Reference = "&",
+    Folder = "",
+    EnumMember = "∋",
+    Constant = "∞",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = ""
+  },
+})
 

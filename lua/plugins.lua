@@ -14,6 +14,7 @@ require('packer').startup(function(use)
   use 'marko-cerovac/material.nvim'
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
+  use 'onsails/lspkind.nvim'
 
 --Plug 'jackguo380/vim-lsp-cxx-highlight'
   use 'morhetz/gruvbox'
