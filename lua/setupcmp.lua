@@ -40,7 +40,11 @@
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        if vim.fn["vsnip#jumpable"](1) == 1 then
+          feedkey("<Plug>(vsnip-jump-next)", "")
+        else
+          fallback()
+        end -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
       end
     end, { "i", "s" }),
 
@@ -49,8 +53,15 @@
         cmp.select_prev_item()
       elseif vim.fn["vsnip#jumpable"](-1) == 1 then
         feedkey("<Plug>(vsnip-jump-prev)", "")
+      else 
+        if vim.fn["vsnip#jumpable"](-1) == 1 then
+            feedkey("<Plug>(vsnip-jump-previous)", "")
+        else 
+            fallback()
+        end
       end
     end, { "i", "s"}),
+
     }),
     sources = cmp.config.sources({
       { name = 'nvim_lsp' },
