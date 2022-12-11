@@ -3,6 +3,7 @@ vim.cmd([[ runtime airline.vim ]])
 require('setupcmp')
 require('setupmaterial')
 require('setupnvimtree')
+require('setuplualine')
 vim.cmd([[ runtime stuff.vim ]])
 
 require'nvim-treesitter.configs'.setup {
