@@ -1,10 +1,13 @@
 
-if vim.fn["has"]('nvim-0.8') == 0 then
+local has = vim.fn["has"]
+
+if has('nvim-0.8') == 0 then
     error("Neovim 0.8+ is required")
 end
 
 require('plugins')
 require('setupcmp')
+require('langserver')
 require('setupmaterial')
 require('setupnvimtree')
 require('setuplualine')
@@ -13,7 +16,7 @@ require('setupbarbar')
 require'nvim-treesitter.configs'.setup
 {
   ensure_installed = { "c", "lua", "cpp" },
-  highlight = 
+  highlight =
   {
     enable = true,
     additional_vim_regex_highlighting = true,
@@ -58,6 +61,9 @@ set 'visualbell'
 -- set 'cmdheight=2'
 set 'notimeout ttimeout ttimeoutlen=200'
 set 'pastetoggle=<F11>'
+set 'list'
+--☱☲☳☴
+set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
 
 -- From the barbar repo
 local nvim_tree_events = require('nvim-tree.events')
