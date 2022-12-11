@@ -29,6 +29,7 @@ local cmd = vim.cmd
 local set = vim.cmd.set
 local color = vim.cmd.colorscheme
 local global = vim.g
+local command = function(s) vim.cmd.command({ bang = true, args = { s } }) end
 
 --cmd 'echo "I love Frums"'
 set 'number'
@@ -67,15 +68,18 @@ set 'list'
 set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
 
 -- lsp stuff
-cmd 'command! -nargs=0 LSPDefinition lua vim.lsp.buf.definition()'
-cmd 'command! -nargs=0 LSPTypeDefinition lua vim.lsp.buf.type_definition()'
-cmd 'command! -nargs=0 LSPDeclaration lua vim.lsp.buf.declaration()'
-cmd 'command! -nargs=0 LSPHover lua vim.lsp.buf.hover()'
-cmd 'command! -nargs=0 LSPReferences lua vim.lsp.buf.references()'
-cmd 'command! -nargs=0 LSPRename lua vim.lsp.buf.rename()'
+command '-nargs=0 LSPDefinition lua vim.lsp.buf.definition()'
+command '-nargs=0 LSPTypeDefinition lua vim.lsp.buf.type_definition()'
+command '-nargs=0 LSPDeclaration lua vim.lsp.buf.declaration()'
+command '-nargs=0 LSPHover lua vim.lsp.buf.hover()'
+command '-nargs=0 LSPReferences lua vim.lsp.buf.references()'
+command '-nargs=0 LSPRename lua vim.lsp.buf.rename()'
+
+command '-nargs=0 NvimTreeFloat lua NvimTreeFloat()'
+command '-nargs=0 NvimTreeDock lua NvimTreeDock()'
 
 -- From the barbar repo
---[[local nvim_tree_events = require('nvim-tree.events')
+local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')
 
 local function get_tree_size()
@@ -83,14 +87,22 @@ local function get_tree_size()
 end
 
 nvim_tree_events.subscribe('TreeOpen', function()
-  bufferline_api.set_offset(get_tree_size())
+  if not NvimTreeIsFloating() then
+    bufferline_api.set_offset(get_tree_size())
+  else
+    bufferline_api.set_offset(0)
+  end
 end)
 
 nvim_tree_events.subscribe('Resize', function()
-  bufferline_api.set_offset(get_tree_size())
+  if not NvimTreeIsFloating() then
+    bufferline_api.set_offset(get_tree_size())
+  end
 end)
 
 nvim_tree_events.subscribe('TreeClose', function()
-  bufferline_api.set_offset(0)
-end)]]
+  if not NvimTreeIsFloating() then
+    bufferline_api.set_offset(0)
+  end
+end)
 
