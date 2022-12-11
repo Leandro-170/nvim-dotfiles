@@ -36,6 +36,8 @@ lspconfig.sumneko_lua.setup
   }
 }
 
+lspconfig.pyright.setup{}
+
 lspkind.init({
   mode = 'symbol_text',
 
@@ -77,4 +79,3 @@ lspkind.init({
     TypeParameter = ""
   },
 })
-
