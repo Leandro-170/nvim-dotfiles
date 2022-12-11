@@ -14,8 +14,8 @@
       end,
     },
     window = {
-      -- completion = cmp.config.window.bordered(),
-      -- documentation = cmp.config.window.bordered(),
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
     },
     mapping = cmp.mapping.preset.insert({
       ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -68,8 +68,16 @@
   require('lspconfig')['ccls'].setup {
     capabilities = capabilities;
     init_options = {
-    highlight = {
+      highlight = {
         lsRanges = true;
-      }
+      };
+      compilationDatabaseDirectory = "build";
+      index = {
+        threads = 0;
+      };
+      clang = {
+        excludeArgs = { "-frounding-math"} ;
+      };
     }
   }
+

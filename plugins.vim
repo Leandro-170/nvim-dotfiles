@@ -27,6 +27,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 " Plug 'mfussenegger/nvim-dap'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 call plug#end()
 
