@@ -2,6 +2,26 @@ local lspconfig = require'lspconfig'
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local lspkind = require('lspkind')
 
+vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+  {"◆", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"│", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"│", "FloatBorder"},
+}
+
+local original_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return original_preview(contents, syntax, opts, ...)
+end
+
 lspconfig['ccls'].setup
 {
   capabilities = capabilities;
@@ -11,11 +31,14 @@ lspconfig['ccls'].setup
     };
     compilationDatabaseDirectory = "build";
     index = {
-      threads = 0;
+      threads = 12;
     };
     clang = {
       excludeArgs = { "-frounding-math"} ;
     };
+    client = {
+      snippetSupport = true
+    }
   }
 }
 

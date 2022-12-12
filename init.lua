@@ -30,6 +30,7 @@ local set = vim.cmd.set
 local color = vim.cmd.colorscheme
 local global = vim.g
 local command = function(s) vim.cmd.command({ bang = true, args = { s } }) end
+local autocmd = function(event, pattern, callback) vim.api.nvim_create_autocmd(event, {pattern = pattern, callback = callback}) end
 
 --cmd 'echo "I love Frums"'
 set 'number'
@@ -66,17 +67,20 @@ set 'pastetoggle=<F11>'
 set 'list'
 --☱☲☳☴
 set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
+set 'updatetime=2500'
 
 -- lsp stuff
 command 'LSPDefinition lua vim.lsp.buf.definition()'
 command 'LSPTypeDefinition lua vim.lsp.buf.type_definition()'
 command 'LSPDeclaration lua vim.lsp.buf.declaration()'
-command 'LSPHover lua vim.lsp.buf.hover()'
+command 'LSPHover lua vim.lsp.buf.hover({focusable = false})'
 command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
 
 command 'NvimTreeFloat lua NvimTreeFloat()'
 command 'NvimTreeDock lua NvimTreeDock()'
+
+autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
 
 -- From the barbar repo
 local nvim_tree_events = require('nvim-tree.events')
