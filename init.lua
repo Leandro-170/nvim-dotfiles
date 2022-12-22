@@ -7,23 +7,8 @@ end
 
 -- Plugins and configurations for them
 require('plugins')
-require('setupcmp')
-require('langserver')
-require('setupmaterial')
-require('setupnvimtree')
-require('setuplualine')
-require('setupbarbar')
-
--- Treesitter config
-require'nvim-treesitter.configs'.setup
-{
-  ensure_installed = { "c", "lua", "cpp" },
-  highlight =
-  {
-    enable = true,
-    additional_vim_regex_highlighting = true,
-  },
-}
+require('setup')
+require('ui')
 
 local cmd = vim.cmd
 local set = vim.cmd.set
@@ -41,7 +26,7 @@ color 'material'
 
 set 'softtabstop=4'
 set 'shiftwidth=4'
-cmd 'command! -nargs=1 TabSet set softtabstop=<args> shiftwidth=<args>'
+command '-nargs=1 TabSet set softtabstop=<args> shiftwidth=<args>'
 
 set 'expandtab'
 set 'nocompatible'
@@ -80,9 +65,9 @@ command 'LSPRename lua vim.lsp.buf.rename()'
 command 'NvimTreeFloat lua NvimTreeFloat()'
 command 'NvimTreeDock lua NvimTreeDock()'
 
-autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+--autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
 
--- From the barbar repo
+-- Make tabs not show up above nvim-tree
 local nvim_tree_events = require('nvim-tree.events')
 local bufferline_api = require('bufferline.api')
 

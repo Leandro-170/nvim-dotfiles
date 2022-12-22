@@ -1,9 +1,127 @@
 -- Setup nvim-cmp.
 
-vim.cmd([[ set completeopt=menu,menuone,noselect ]])
-local cmp = require'cmp'
-local lspkind = require'lspkind'
+local lspconfig = require('lspconfig')
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local cmp = require('cmp')
+local lspkind = require('lspkind')
 
+-- Treesitter config
+require'nvim-treesitter.configs'.setup
+{
+  ensure_installed = { "c", "lua", "cpp" },
+  highlight =
+  {
+    enable = true,
+    additional_vim_regex_highlighting = true,
+  },
+}
+
+-- enable border for vim.lsp.buf.hover()
+
+vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+  {"◆", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"│", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"─", "FloatBorder"},
+  {"◆", "FloatBorder"},
+  {"│", "FloatBorder"},
+}
+
+local original_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts, ...)
+  opts = opts or {}
+  opts.border = opts.border or border
+  return original_preview(contents, syntax, opts, ...)
+end
+
+lspconfig['ccls'].setup
+{
+  capabilities = capabilities;
+  init_options = {
+    highlight = {
+      lsRanges = true;
+    };
+    compilationDatabaseDirectory = "build";
+    index = {
+      threads = 12;
+    };
+    clang = {
+      excludeArgs = { "-frounding-math"} ;
+    };
+    client = {
+      snippetSupport = true
+    }
+  }
+}
+
+lspconfig['sumneko_lua'].setup
+{
+  settings = {
+    Lua = {
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+      -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      telemetry = { enable = false, }
+    }
+  }
+}
+
+lspconfig['pyright'].setup{}
+
+lspkind.init({
+  mode = 'symbol_text',
+
+  -- default symbol map
+  -- can be either 'default' (requires nerd-fonts font) or
+  -- 'codicons' for codicon preset (requires vscode-codicons font)
+  --
+  -- default: 'default'
+  preset = 'default',
+
+  -- override preset symbols
+  --
+  -- default: {}
+  symbol_map = {
+    Text = "",
+    Method = "⚐",
+    Function = "⚑",
+    Constructor = "♡",
+    Field = "⏺",
+    Variable = "♠",
+    Class = "♦",
+    Interface = "♢",
+    Module = "♤",
+    Property = "○",
+    Unit = "☐",
+    Value = "✦",
+    Enum = "∃",
+    Keyword = "",
+    Snippet = "",
+    Color = "⣿",
+    File = "",
+    Reference = "&",
+    Folder = "",
+    EnumMember = "∋",
+    Constant = "∞",
+    Struct = "",
+    Event = "",
+    Operator = "",
+    TypeParameter = ""
+  },
+})
+
+-- nvim-cmp things
+
+vim.cmd([[ set completeopt=menu,menuone,noselect ]])
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
