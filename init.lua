@@ -1,8 +1,13 @@
 
 local has = vim.fn["has"]
+local exists = vim.fn["exists"]
 
 if has('nvim-0.8') == 0 then
-    error("Neovim 0.8+ is required")
+  error("Neovim 0.8+ is required")
+end
+
+if exists('g:neovide') then
+  vim.cmd.set("guifont=CozetteVector:h9")
 end
 
 -- Plugins and configurations for them
@@ -65,7 +70,7 @@ command 'LSPRename lua vim.lsp.buf.rename()'
 command 'NvimTreeFloat lua NvimTreeFloat()'
 command 'NvimTreeDock lua NvimTreeDock()'
 
---autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
 
 -- Make tabs not show up above nvim-tree
 local nvim_tree_events = require('nvim-tree.events')
