@@ -24,8 +24,8 @@ require('packer').startup(function(use)
   use 'dracula/vim'
   use 'christianchiarulli/nvcode-color-schemes.vim'
   use{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
-  use 'kyazdani42/nvim-web-devicons'
-  use 'kyazdani42/nvim-tree.lua'
+  use 'nvim-tree/nvim-web-devicons'
+  use 'nvim-tree/nvim-tree.lua'
   use{'mg979/vim-visual-multi', branch = 'master'}
   use 'airblade/vim-gitgutter'
   use 'romgrk/barbar.nvim'
