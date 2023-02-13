@@ -29,6 +29,7 @@ require('packer').startup(function(use)
   use{'mg979/vim-visual-multi', branch = 'master'}
   use 'airblade/vim-gitgutter'
   use 'romgrk/barbar.nvim'
+  use{"catppuccin/nvim", as = "catppuccin"}
 
 end)
 

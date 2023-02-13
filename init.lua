@@ -26,8 +26,9 @@ local autocmd = function(event, pattern, callback) vim.api.nvim_create_autocmd(e
 set 'number'
 set 'numberwidth=1'
 set 'mouse=a'
-global.material_style = "deep ocean"
-color 'material'
+--global.material_style = "deep ocean"
+--color 'material'
+color 'catppuccin-mocha'
 
 set 'softtabstop=4'
 set 'shiftwidth=4'
@@ -67,9 +68,6 @@ command 'LSPHover lua vim.lsp.buf.hover({focusable = false})'
 command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
 
-command 'NvimTreeFloat lua NvimTreeFloat()'
-command 'NvimTreeDock lua NvimTreeDock()'
-
 autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
 
 -- Make tabs not show up above nvim-tree
@@ -81,22 +79,14 @@ local function get_tree_size()
 end
 
 nvim_tree_events.subscribe('TreeOpen', function()
-  if not NvimTreeIsFloating() then
-    bufferline_api.set_offset(get_tree_size())
-  else
-    bufferline_api.set_offset(0)
-  end
+  bufferline_api.set_offset(get_tree_size())
 end)
 
 nvim_tree_events.subscribe('Resize', function()
-  if not NvimTreeIsFloating() then
-    bufferline_api.set_offset(get_tree_size())
-  end
+  bufferline_api.set_offset(get_tree_size())
 end)
 
 nvim_tree_events.subscribe('TreeClose', function()
-  if not NvimTreeIsFloating() then
-    bufferline_api.set_offset(0)
-  end
+  bufferline_api.set_offset(0)
 end)
 

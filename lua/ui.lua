@@ -239,24 +239,3 @@ nvim_tree.setup({
   },
 })
 
-local tree_view = require('nvim-tree.view')
-local tree_api = require('nvim-tree.api').tree
-
-function NvimTreeFloat()
-  nvim_tree.config.view.float.enable = true
-  if tree_view.is_visible() then
-    tree_api.close()
-    tree_api.open()
-  end
-end
-function NvimTreeDock()
-  nvim_tree.config.view.float.enable = false
-  if tree_view.is_visible() then
-    tree_api.close()
-    tree_api.open()
-  end
-end
-function NvimTreeIsFloating()
-  return nvim_tree.config.view.float.enable
-end
-
