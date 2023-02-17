@@ -4,6 +4,8 @@ local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local cmp = require('cmp')
 local lspkind = require('lspkind')
+local nvim_dap = require('dap')
+local trouble = require('trouble')
 
 -- Treesitter config
 require'nvim-treesitter.configs'.setup
@@ -233,3 +235,4 @@ cmp.setup.cmdline(':', {
   })
 })
 
+trouble.setup()

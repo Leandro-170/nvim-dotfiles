@@ -2,6 +2,7 @@ local barbar    = require('bufferline') -- at line 5
 local material  = require('material')   -- at line 76
 local lualine   = require('lualine')    -- at line 141
 local nvim_tree = require('nvim-tree')  -- at line 182
+local true_zen  = require('true-zen')   -- at line 243
 
 barbar.setup {
   -- Enable/disable animations
@@ -22,7 +23,7 @@ barbar.setup {
   clickable = true,
 
   -- Excludes buffers from the tabline
-  exclude_ft = {'javascript'},
+  exclude_ft = {},
   exclude_name = {'package.json'},
 
   -- Enable/disable icons
@@ -203,8 +204,8 @@ nvim_tree.setup({
       open_win_config = {
         relative = "editor",
         border = "rounded",
-        width = 35,
-        height = 20,
+        width = 15,
+        height = 15,
         row = 1,
         col = 1,
       },
@@ -239,3 +240,24 @@ nvim_tree.setup({
   },
 })
 
+-- Make tabs not show up above nvim-tree
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_api = require('bufferline.api')
+
+local function get_tree_size()
+  return require'nvim-tree.view'.View.width
+end
+
+nvim_tree_events.subscribe('TreeOpen', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('Resize', function()
+  bufferline_api.set_offset(get_tree_size())
+end)
+
+nvim_tree_events.subscribe('TreeClose', function()
+  bufferline_api.set_offset(0)
+end)
+
+true_zen.setup()
