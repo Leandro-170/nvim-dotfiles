@@ -14,11 +14,11 @@ end
 require('plugins')
 require('setup')
 require('ui')
+require('keymaps')
 
 local cmd = vim.cmd
 local set = vim.cmd.set
 local color = vim.cmd.colorscheme
-local global = vim.g
 local command = function(s) vim.cmd.command({ bang = true, args = { s } }) end
 local autocmd = function(event, pattern, callback) vim.api.nvim_create_autocmd(event, {pattern = pattern, callback = callback}) end
 
@@ -69,4 +69,16 @@ command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
 
 autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+
+keymaps
+{
+  ['<C-t>']   = { mode = { modes.NORMAL, modes.INSERT }, "<cmd>Trouble<CR>"        },
+  ['<C-e>']   = { mode = { modes.NORMAL, modes.INSERT }, "<cmd>NvimTreeToggle<CR>" },
+  ['<F2>']    = { mode = { modes.NORMAL },               "<cmd>LSPRename<CR>"      },
+  ['<F3>']    = { mode = { modes.NORMAL },               "<cmd>LSPDeclaration<CR>" },
+  ['<F4>']    = { mode = { modes.NORMAL },               "<cmd>LSPDefinition<CR>"  },
+  ['<C-d>']   = { mode = { modes.INSERT },               "<ESC>yyPi"               },
+  ['<Tab>']   = { mode = { modes.NORMAL },               "<cmd>BufferNext<CR>"     },
+  ['<S-Tab>'] = { mode = { modes.NORMAL },               "<cmd>BufferPrevious<CR>" },
+}
 
