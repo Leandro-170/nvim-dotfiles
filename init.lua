@@ -78,7 +78,7 @@ keymaps
   ['<F3>']    = { mode = { modes.NORMAL },               "<cmd>LSPDeclaration<CR>" },
   ['<F4>']    = { mode = { modes.NORMAL },               "<cmd>LSPDefinition<CR>"  },
   ['<C-d>']   = { mode = { modes.INSERT },               "<ESC>yyPi"               },
-  ['<Tab>']   = { mode = { modes.NORMAL },               "<cmd>BufferNext<CR>"     },
-  ['<S-Tab>'] = { mode = { modes.NORMAL },               "<cmd>BufferPrevious<CR>" },
+  ['<C-Tab>']   = { mode = { modes.NORMAL },               "<cmd>BufferNext<CR>"     },
+  ['<C-S-Tab>'] = { mode = { modes.NORMAL },               "<cmd>BufferPrevious<CR>" },
 }
 
