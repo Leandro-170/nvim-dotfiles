@@ -72,13 +72,13 @@ autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false})
 
 keymaps
 {
-  ['<C-t>']   = { mode = { modes.NORMAL, modes.INSERT }, "<cmd>Trouble<CR>"        },
-  ['<C-e>']   = { mode = { modes.NORMAL, modes.INSERT }, "<cmd>NvimTreeToggle<CR>" },
-  ['<F2>']    = { mode = { modes.NORMAL },               "<cmd>LSPRename<CR>"      },
-  ['<F3>']    = { mode = { modes.NORMAL },               "<cmd>LSPDeclaration<CR>" },
-  ['<F4>']    = { mode = { modes.NORMAL },               "<cmd>LSPDefinition<CR>"  },
-  ['<C-d>']   = { mode = { modes.INSERT },               "<ESC>yyPi"               },
-  ['<C-Tab>']   = { mode = { modes.NORMAL },               "<cmd>BufferNext<CR>"     },
-  ['<C-S-Tab>'] = { mode = { modes.NORMAL },               "<cmd>BufferPrevious<CR>" },
+  ['<C-t>']     = { mode = { NORMAL, INSERT }, "<cmd>Trouble<CR>"        },
+  ['<C-e>']     = { mode = { NORMAL, INSERT }, "<cmd>NvimTreeToggle<CR>" },
+  ['<F2>']      = { mode = { NORMAL },         "<cmd>LSPRename<CR>"      },
+  ['<F3>']      = { mode = { NORMAL },         "<cmd>LSPDeclaration<CR>" },
+  ['<F4>']      = { mode = { NORMAL },         "<cmd>LSPDefinition<CR>"  },
+  ['<C-d>']     = { mode = { INSERT },         "<ESC>yyPi"               },
+  ['<C-Tab>']   = { mode = { NORMAL },         "<cmd>BufferNext<CR>"     },
+  ['<C-S-Tab>'] = { mode = { NORMAL },         "<cmd>BufferPrevious<CR>" },
 }
 

@@ -1,9 +1,7 @@
-modes = {
-  NORMAL = 'n',
-  INSERT = 'i',
-  VISUAL = 'v',
-  COMMAND = 'c',
-}
+NORMAL = 'n'
+INSERT = 'i'
+VISUAL = 'v'
+COMMAND = 'c'
 
 function keymaps(tbl)
   for index, value in pairs(tbl) do
