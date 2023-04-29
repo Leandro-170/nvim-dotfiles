@@ -19,11 +19,11 @@ require('packer').startup(function(use)
   use 'onsails/lspkind.nvim'
   use 'morhetz/gruvbox'
   --use 'flazz/vim-colorschemes'
-  use 'yggdroot/indentline'
+  use 'lukas-reineke/indent-blankline.nvim'
   use 'nvim-lualine/lualine.nvim'
   use 'dracula/vim'
   use 'christianchiarulli/nvcode-color-schemes.vim'
-  use{'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+  use 'nvim-treesitter/nvim-treesitter'
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-tree/nvim-tree.lua'
   use{'mg979/vim-visual-multi', branch = 'master'}
