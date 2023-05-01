@@ -31,8 +31,15 @@ require('packer').startup(function(use)
   use 'romgrk/barbar.nvim'
   use{'catppuccin/nvim', as = 'catppuccin'}
   use 'Pocco81/true-zen.nvim'
-  use 'mfussenegger/nvim-dap'
   use 'folke/trouble.nvim'
+  use
+  {
+    'mfussenegger/nvim-dap',
+    'rcarriga/nvim-dap-ui',
+    'theHamsta/nvim-dap-virtual-text'
+  }
+  use 'nvim-lua/plenary.nvim'
+  use 'Civitasv/cmake-tools.nvim'
 
 end)
 
