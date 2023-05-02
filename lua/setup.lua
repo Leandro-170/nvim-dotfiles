@@ -10,7 +10,6 @@ local trouble = require('trouble')
 
 neodev.setup()
 
--- Treesitter config
 require'nvim-treesitter.configs'.setup
 {
   ensure_installed = { "c", "lua", "cpp" },
@@ -49,14 +48,14 @@ lspconfig['ccls'].setup
   init_options = {
     highlight = {
       lsRanges = true;
-    };
+    },
     compilationDatabaseDirectory = "build";
     index = {
       threads = 12;
-    };
+    },
     clang = {
       excludeArgs = { "-frounding-math"} ;
-    };
+    },
     client = {
       snippetSupport = true
     }
