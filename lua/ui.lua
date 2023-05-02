@@ -7,7 +7,6 @@ local indentl   = require('indent_blankline')
 
 barbar.setup
 {
-
   animation = true,
   auto_hide = false,
   tabpages = false,
