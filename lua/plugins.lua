@@ -46,14 +46,7 @@ packer.startup(function(use)
   use{'catppuccin/nvim', as = 'catppuccin'}
   use 'Pocco81/true-zen.nvim'
   use 'folke/trouble.nvim'
-  use
-  {
-    'mfussenegger/nvim-dap',
-    'rcarriga/nvim-dap-ui',
-    'theHamsta/nvim-dap-virtual-text'
-  }
-  use 'nvim-lua/plenary.nvim'
-  use 'Civitasv/cmake-tools.nvim'
+  use 'folke/neodev.nvim'
 
   if packer_bootstrap then
     packer.sync()

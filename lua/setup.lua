@@ -1,11 +1,13 @@
 -- Setup nvim-cmp.
 
+local neodev = require('neodev')
 local lspconfig = require('lspconfig')
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-local nvim_dap = require('dap')
 local trouble = require('trouble')
+
+neodev.setup()
 
 -- Treesitter config
 require'nvim-treesitter.configs'.setup
