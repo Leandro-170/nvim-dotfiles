@@ -47,6 +47,7 @@ packer.startup(function(use)
   use 'Pocco81/true-zen.nvim'
   use 'folke/trouble.nvim'
   use 'folke/neodev.nvim'
+  use 'lewis6991/impatient.nvim'
 
   if packer_bootstrap then
     packer.sync()
