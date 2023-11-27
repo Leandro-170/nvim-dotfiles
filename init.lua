@@ -67,6 +67,7 @@ command 'LSPDeclaration lua vim.lsp.buf.declaration()'
 command 'LSPHover lua vim.lsp.buf.hover({focusable = false})'
 command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
+command 'LSPCodeAction lua vim.lsp.buf.code_action()'
 
 autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
 
@@ -77,6 +78,7 @@ keymaps
   ['<F2>']      = { mode = { NORMAL },         "<cmd>LSPRename<CR>"      },
   ['<F3>']      = { mode = { NORMAL },         "<cmd>LSPDeclaration<CR>" },
   ['<F4>']      = { mode = { NORMAL },         "<cmd>LSPDefinition<CR>"  },
+  ['<F5>']      = { mode = { NORMAL },         "<cmd>LSPCodeAction<CR>"  },
   ['<C-d>']     = { mode = { INSERT },         "<ESC>yyPi"               },
   ['<C-Tab>']   = { mode = { NORMAL },         "<cmd>BufferNext<CR>"     },
   ['<C-S-Tab>'] = { mode = { NORMAL },         "<cmd>BufferPrevious<CR>" },
