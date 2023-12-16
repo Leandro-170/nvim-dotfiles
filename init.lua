@@ -21,6 +21,7 @@ local set = vim.cmd.set
 local color = vim.cmd.colorscheme
 local command = function(s) vim.cmd.command({ bang = true, args = { s } }) end
 local autocmd = function(event, pattern, callback) vim.api.nvim_create_autocmd(event, {pattern = pattern, callback = callback}) end
+local highlight = vim.cmd.highlight
 
 --cmd 'echo "I love Frums"'
 set 'number'
@@ -69,7 +70,12 @@ command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
 command 'LSPCodeAction lua vim.lsp.buf.code_action()'
 
-autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+--autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+
+highlight "BufferCurrentSign guifg=#f5c2e7 guibg=#45475a"
+highlight "BufferCurrentSignRight guifg=#f5c2e7 guibg=#45475a"
+highlight "BufferInactiveSign guifg=#f5c2e7 guibg=#181825"
+highlight "BufferInactiveSignRight guifg=#f5c2e7 guibg=#181825"
 
 keymaps
 {
@@ -79,6 +85,7 @@ keymaps
   ['<F3>']      = { mode = { NORMAL },         "<cmd>LSPDeclaration<CR>" },
   ['<F4>']      = { mode = { NORMAL },         "<cmd>LSPDefinition<CR>"  },
   ['<F5>']      = { mode = { NORMAL },         "<cmd>LSPCodeAction<CR>"  },
+  ['<F6>']      = { mode = { NORMAL },         "<cmd>LSPHover<CR>"       },
   ['<C-d>']     = { mode = { INSERT },         "<ESC>yyPi"               },
   ['<C-Tab>']   = { mode = { NORMAL },         "<cmd>BufferNext<CR>"     },
   ['<C-S-Tab>'] = { mode = { NORMAL },         "<cmd>BufferPrevious<CR>" },
