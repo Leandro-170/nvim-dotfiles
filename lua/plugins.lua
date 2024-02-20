@@ -1,57 +1,44 @@
-local ensure_packer = function()
-  local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-  if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
-  return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
 end
+vim.opt.rtp:prepend(lazypath)
+local lazy = require 'lazy'
 
-local packer_bootstrap = ensure_packer()
-local packer = require 'packer'
-
-packer.init({
-  display = {
-    open_fn = require('packer.util').float
-  }
+lazy.setup({
+  'neovim/nvim-lspconfig',
+  'hrsh7th/cmp-nvim-lsp',
+  'hrsh7th/cmp-buffer',
+  'hrsh7th/cmp-path',
+  'hrsh7th/cmp-cmdline',
+  'hrsh7th/nvim-cmp',
+  'marko-cerovac/material.nvim',
+  'hrsh7th/cmp-vsnip',
+  'hrsh7th/vim-vsnip',
+  'onsails/lspkind.nvim',
+  'morhetz/gruvbox',
+  -- 'flazz/vim-colorschemes',
+  'lukas-reineke/indent-blankline.nvim',
+  'nvim-lualine/lualine.nvim',
+  'dracula/vim',
+  'christianchiarulli/nvcode-color-schemes.vim',
+  'nvim-treesitter/nvim-treesitter',
+  'nvim-tree/nvim-web-devicons',
+  'nvim-tree/nvim-tree.lua',
+  {'mg979/vim-visual-multi', branch = 'master'},
+  'airblade/vim-gitgutter',
+  'romgrk/barbar.nvim',
+  {'catppuccin/nvim', name = 'catppuccin'},
+  'Pocco81/true-zen.nvim',
+  'folke/trouble.nvim',
+  'folke/neodev.nvim',
+  'lewis6991/impatient.nvim',
 })
-
-packer.startup(function(use)
-
-  use 'wbthomason/packer.nvim'
-  use 'neovim/nvim-lspconfig'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/nvim-cmp'
-  use 'marko-cerovac/material.nvim'
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
-  use 'onsails/lspkind.nvim'
-  use 'morhetz/gruvbox'
-  --use 'flazz/vim-colorschemes'
-  use 'lukas-reineke/indent-blankline.nvim'
-  use 'nvim-lualine/lualine.nvim'
-  use 'dracula/vim'
-  use 'christianchiarulli/nvcode-color-schemes.vim'
-  use 'nvim-treesitter/nvim-treesitter'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'nvim-tree/nvim-tree.lua'
-  use{'mg979/vim-visual-multi', branch = 'master'}
-  use 'airblade/vim-gitgutter'
-  use 'romgrk/barbar.nvim'
-  use{'catppuccin/nvim', as = 'catppuccin'}
-  use 'Pocco81/true-zen.nvim'
-  use 'folke/trouble.nvim'
-  use 'folke/neodev.nvim'
-  use 'lewis6991/impatient.nvim'
-
-  if packer_bootstrap then
-    packer.sync()
-  end
-
-end)
 
