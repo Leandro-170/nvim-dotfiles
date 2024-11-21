@@ -34,11 +34,25 @@ lazy.setup({
   'nvim-tree/nvim-tree.lua',
   {'mg979/vim-visual-multi', branch = 'master'},
   'airblade/vim-gitgutter',
+  'tpope/vim-fugitive',
   'romgrk/barbar.nvim',
   {'catppuccin/nvim', name = 'catppuccin'},
   'Pocco81/true-zen.nvim',
   'folke/trouble.nvim',
   'folke/neodev.nvim',
   'lewis6991/impatient.nvim',
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+    }
+  }
+},
+{
+  ui = {
+    border = "rounded"
+  }
 })
 

@@ -8,6 +8,7 @@ end
 
 if exists('g:neovide') then
   vim.cmd.set("guifont=CozetteVector:h9")
+  vim.cmd.let("g:neovide_cursor_vfx_mode=\"wireframe\"")
 end
 
 -- Plugins and configurations for them
