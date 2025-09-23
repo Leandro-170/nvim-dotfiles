@@ -7,11 +7,10 @@ if has('nvim-0.8') == 0 then
 end
 
 if exists('g:neovide') then
-  vim.cmd.set("guifont=CozetteVector:h9")
+  vim.cmd.set("guifont=CozetteVector:h10")
   vim.cmd.let("g:neovide_cursor_vfx_mode=\"wireframe\"")
 end
 
--- Plugins and configurations for them
 require('plugins')
 require('setup')
 require('ui')
@@ -56,10 +55,7 @@ set 'confirm'
 set 'visualbell'
 -- set 'cmdheight=2'
 set 'notimeout ttimeout ttimeoutlen=200'
-set 'pastetoggle=<F11>'
-set 'list'
---☱☲☳☴
-set 'listchars+=tab:⇐=⇒,trail:☵'--multispace:☱☲☳☴'
+set 'nolist'
 set 'updatetime=2500'
 
 -- lsp stuff
