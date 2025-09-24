@@ -79,7 +79,7 @@ require 'keymaps'
   ['<F4>']      = { mode = { NORMAL },         "<cmd>LSPDefinition<CR>"  },
   ['<F5>']      = { mode = { NORMAL },         "<cmd>LSPCodeAction<CR>"  },
   ['<F6>']      = { mode = { NORMAL },         "<cmd>LSPHover<CR>"       },
-  ['<C-d>']     = { mode = { INSERT },         "<ESC>yyPi"               },
+  ['<C-d>']     = { mode = { INSERT },         "<ESC>yypi"               },
   ['<C-Tab>']   = { mode = { NORMAL },         "<cmd>BufferNext<CR>"     },
   ['<C-S-Tab>'] = { mode = { NORMAL },         "<cmd>BufferPrevious<CR>" },
 }
