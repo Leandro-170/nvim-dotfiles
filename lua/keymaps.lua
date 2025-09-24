@@ -3,7 +3,7 @@ INSERT = 'i'
 VISUAL = 'v'
 COMMAND = 'c'
 
-function keymaps(tbl)
+local keymaps = function(tbl)
   for index, value in pairs(tbl) do
     local mode = {}
     for _, mv in pairs(value.mode) do
@@ -15,3 +15,4 @@ function keymaps(tbl)
     vim.keymap.set(mode, key, thing, opt)
   end
 end
+return keymaps

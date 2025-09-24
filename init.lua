@@ -1,9 +1,8 @@
-
 local has = vim.fn["has"]
 local exists = vim.fn["exists"]
 
-if has('nvim-0.8') == 0 then
-  error("Neovim 0.8+ is required")
+if has('nvim-0.11') == 0 then
+  error("Neovim 0.11+ is required")
 end
 
 if exists('g:neovide') then
@@ -11,10 +10,7 @@ if exists('g:neovide') then
   vim.cmd.let("g:neovide_cursor_vfx_mode=\"wireframe\"")
 end
 
-require('plugins')
-require('setup')
-require('ui')
-require('keymaps')
+require 'plugins' -- as easy as that
 
 local cmd = vim.cmd
 local set = vim.cmd.set
@@ -29,7 +25,7 @@ set 'numberwidth=1'
 set 'mouse=a'
 --global.material_style = "deep ocean"
 --color 'material'
-color 'catppuccin-mocha'
+color 'catppuccin'
 
 set 'softtabstop=4'
 set 'shiftwidth=4'
@@ -74,7 +70,7 @@ highlight "BufferCurrentSignRight guifg=#f5c2e7 guibg=#45475a"
 highlight "BufferInactiveSign guifg=#f5c2e7 guibg=#181825"
 highlight "BufferInactiveSignRight guifg=#f5c2e7 guibg=#181825"
 
-keymaps
+require 'keymaps'
 {
   ['<C-t>']     = { mode = { NORMAL, INSERT }, "<cmd>Trouble<CR>"        },
   ['<C-e>']     = { mode = { NORMAL, INSERT }, "<cmd>NvimTreeToggle<CR>" },
