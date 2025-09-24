@@ -273,6 +273,7 @@ require 'lazy'.setup
           ["vim.lsp.util.stylize_markdown"] = true,
           ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
         },
+        hover = { enabled = false } -- so round borders aren't prevented from showing up
       },
       presets = {
         inc_rename = false, -- enables an input dialog for inc-rename.nvim

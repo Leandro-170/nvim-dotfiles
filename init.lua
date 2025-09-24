@@ -20,6 +20,7 @@ local autocmd = function(event, pattern, callback) vim.api.nvim_create_autocmd(e
 local highlight = vim.cmd.highlight
 
 --cmd 'echo "I love Frums"'
+vim.o.winborder = 'rounded'
 set 'number'
 set 'numberwidth=1'
 set 'mouse=a'
@@ -52,18 +53,18 @@ set 'visualbell'
 -- set 'cmdheight=2'
 set 'notimeout ttimeout ttimeoutlen=200'
 set 'nolist'
-set 'updatetime=2500'
+set 'updatetime=2000'
 
 -- lsp stuff
 command 'LSPDefinition lua vim.lsp.buf.definition()'
 command 'LSPTypeDefinition lua vim.lsp.buf.type_definition()'
 command 'LSPDeclaration lua vim.lsp.buf.declaration()'
-command 'LSPHover lua vim.lsp.buf.hover({focusable = false})'
+command 'LSPHover lua vim.lsp.buf.hover({focusable = false, border = "rounded"})'
 command 'LSPReferences lua vim.lsp.buf.references()'
 command 'LSPRename lua vim.lsp.buf.rename()'
 command 'LSPCodeAction lua vim.lsp.buf.code_action()'
 
---autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover({focusable = false}) end)
+autocmd({ "CursorHold" }, "*", function() vim.lsp.buf.hover {focusable = false, border = "rounded"}  end)
 
 highlight "BufferCurrentSign guifg=#f5c2e7 guibg=#45475a"
 highlight "BufferCurrentSignRight guifg=#f5c2e7 guibg=#45475a"
